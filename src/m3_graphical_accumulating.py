@@ -9,8 +9,8 @@ Additionally, it emphasizes that you must
 before you can implement a solution to the problem in Python.
 
 Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Kyle Brown.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -96,7 +96,7 @@ def draw_parallel_lines(n, point, length, window):
       :type window: rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -109,6 +109,21 @@ def draw_parallel_lines(n, point, length, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ####################################################################
     # ------------------------------------------------------------------
+
+    x = point.x
+    y = point.y
+
+
+    for _ in range(n):
+        start = rg.Point(x,y)
+        end = rg.Point(x+length, y)
+        line = rg.Line(start,end)
+        line.attach_to(window)
+
+        y += 30
+
+    window.render()
+
 
 
 def run_test_draw_lines():
@@ -174,6 +189,26 @@ def draw_lines(n, point, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ####################################################################
     # ------------------------------------------------------------------
+
+    x1 = point.x
+    y1 = point.y
+    x2 = point.x
+    y2 = point.y
+
+    for k in range(n):
+        start = rg.Point(x1,y1)
+        x2 = x1 + 100
+        v = (200/n) #divide the varying partition by the number of lines
+        ymod = v*k
+        y2 = (y1 + ymod - 100) #vary evenly from -100 to 100
+        end = rg.Point(x2,y2)
+
+        line = rg.Line(start,end)
+        line.attach_to(window)
+
+    window.render()
+
+
 
 
 # ----------------------------------------------------------------------
