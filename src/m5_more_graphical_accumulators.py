@@ -28,7 +28,7 @@ import math
 # ----------------------------------------------------------------------
 def main():
     """ Calls the   TEST   functions in this module. """
-    #run_test_draw_squares_from_circle()
+    run_test_draw_squares_from_circle()
     #run_test_draw_circles_from_rectangle()
     run_test_draw_lines_from_rectangles()
 
@@ -117,8 +117,7 @@ def draw_squares_from_circle(n, circle, window):
 
     x = circle.center.x
     y = circle.center.y
-    side_length = circle.radius
-    rg.Circle = circle
+    side_length = circle.radius*2
     circle.attach_to(window)
 
 
