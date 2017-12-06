@@ -381,6 +381,7 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
 
 
 
+
         r1_c = rg.Point(r1_c.x-r1x_shift, r1_c.y+r1y_shift)
         r2_c = rg.Point(r2_c.x-r2x_shift, r2_c.y+r2y_shift)
 
