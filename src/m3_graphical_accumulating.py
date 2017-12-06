@@ -176,7 +176,7 @@ def draw_lines(n, point, window):
       :type window: rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -200,7 +200,7 @@ def draw_lines(n, point, window):
         x2 = x1 + 100
         v = (200/n) #divide the varying partition by the number of lines
         ymod = v*k
-        y2 = (y1 + ymod - 100) #vary evenly from -100 to 100
+        y2 = (y1 + (100-200*k/(n-1))) #vary evenly from -100 to 100
         end = rg.Point(x2,y2)
 
         line = rg.Line(start,end)
