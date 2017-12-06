@@ -9,10 +9,11 @@ Additionally, it emphasizes that you must
 before you can implement a solution to the problem in Python. 
   
 Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Kyle Brown.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
+import math
 
 
 # ----------------------------------------------------------------------
@@ -27,7 +28,7 @@ import rosegraphics as rg
 # ----------------------------------------------------------------------
 def main():
     """ Calls the   TEST   functions in this module. """
-    run_test_draw_squares_from_circle()
+    #run_test_draw_squares_from_circle()
     run_test_draw_circles_from_rectangle()
     run_test_draw_lines_from_rectangles()
 
@@ -53,8 +54,8 @@ def run_test_draw_squares_from_circle():
     draw_squares_from_circle(7, circle, window1)
 
     # Test 2:
-    circle = rg.Circle(rg.Point(350, 70), 50)
-    draw_squares_from_circle(4, circle, window1)
+    circle2 = rg.Circle(rg.Point(350, 70), 50)
+    draw_squares_from_circle(4, circle2, window1)
     window1.close_on_mouse_click()
 
     # ------------------------------------------------------------------
@@ -113,6 +114,28 @@ def draw_squares_from_circle(n, circle, window):
     # ------------------------------------------------------------------
 
 
+
+    x = circle.center.x
+    y = circle.center.y
+    side_length = circle.radius
+    rg.Circle = circle
+    circle.attach_to(window)
+
+
+    for _ in range(n):
+        point = rg.Point(x, y)
+        square = rg.Square(point, side_length)
+        square.attach_to(window)
+
+        x += (math.cos(45)/side_length)/2
+        y += (math.sin(45)/side_length)/2
+
+
+    window.render()
+    
+
+
+
 def run_test_draw_circles_from_rectangle():
     """ Tests the   draw_circles_from_rectangle  function. """
     print()
@@ -134,6 +157,34 @@ def run_test_draw_circles_from_rectangle():
     #   Follow the same form as the example in a previous problem.
     ####################################################################
     # ------------------------------------------------------------------
+
+    window1 = rg.RoseWindow(600, 600)
+
+    # Test 1:
+
+    corner1 = rg.Point(100, 100)
+    corner2 = rg.Point(200, 300)
+    rectangle = rg.Rectangle(corner1,corner2)
+    draw_circles_from_rectangle(5,6,rectangle,window1)
+
+    # Test 2:
+    corner1 = rg.Point(300, 400)
+    corner2 = rg.Point(400, 300)
+    rectangle = rg.Rectangle(corner1,corner2)
+    draw_circles_from_rectangle(1,4,rectangle,window1)
+
+    window1.close_on_mouse_click()
+
+    window2 = rg.RoseWindow(300,500)
+
+    # Test 3:
+    corner1 = rg.Point(0,0)
+    corner2 = rg.Point(100,75)
+    rectangle = rg.Rectangle(corner1, corner2)
+    draw_circles_from_rectangle(7,3, rectangle, window2)
+
+    window2.close_on_mouse_click()
+
 
 
 def draw_circles_from_rectangle(m, n, rectangle, window):
@@ -189,6 +240,21 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ####################################################################
     # ------------------------------------------------------------------
+
+    rectangle.attach_to(window)
+    r_center = rectangle.get_center()
+    height = rectangle.get_height()
+    width = rectangle.get_width()
+
+    for _ in range(m):
+        circle = rg.Circle(r_center, height)
+        circle.attach_to(window)
+
+        r_center.x += -2*r_center.x
+
+    window.render()
+
+
 
 
 def run_test_draw_lines_from_rectangles():
